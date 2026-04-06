@@ -55,6 +55,11 @@ app.use('/api/', limiter);
 
 // ─── API Documentation ─────────────────────────────────────
 
+app.get('/swagger.json', (_req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
   customCss: '.swagger-ui .topbar { display: none }',
   customSiteTitle: 'Finance Dashboard API Docs',
